@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Address Book</title>
+  </head>
+  <main>
+    <h1>Address Book</h1>
+    <form action="/addresses" method="post">
+      <dl>
+        <dt>Name:
+        <dd><input type=text name=name>
+        <dt>Street:
+        <dd><input type=text name=address>
+        <dt>City:
+        <dd><input type=text name=city>
+        <dt>State:
+        <dd><input type=text name=state>
+        <dt>Zip Code:
+        <dd><input type=text name=zip>
+        <dd><input type=submit value=Add>
+      </dl>
+    </form>
+    <ul>
+      {% for address in addresses %}
+        <li>
+          <h2>{{ address.name }}</h2>
+          <p>{{ address.address }}</p>
+          <p>{{ address.city }}</p>
+          <p>{{ address.state }}</p>
+          <p>{{ address.zip }}</p>
+          <form action="{{ url_for('delete', _id=address.id) }}" method="POST">
+            <input type=submit value=Remove>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  </main>
+</html>
