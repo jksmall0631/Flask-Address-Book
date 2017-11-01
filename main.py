@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request, render_template, redirect, url_for
 import requests
 from bs4 import BeautifulSoup
-from xml.etree import ElementTree as ET
 
 app = Flask(__name__)
 
